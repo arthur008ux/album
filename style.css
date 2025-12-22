@@ -153,22 +153,27 @@ main.container {
 
 @media (max-width: 768px) {
 
-  /* Galeria vira coluna */
+  /* Galeria continua lado a lado */
   .gallery {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;        /* mantém horizontal */
+    gap: 12px;
+    max-width: 100vw;
+    overflow: hidden;           /* evita quebrar layout */
   }
 
-  /* Fotos ajustadas pro celular */
+  /* Foto central (destaque) */
   .photo.center {
-    width: 90vw;
+    width: 55vw;                /* maior */
     height: auto;
   }
 
+  /* Fotos laterais */
   .photo.side {
-    width: 70vw;
+    width: 35vw;                /* menores */
     height: auto;
+    opacity: 0.8;
   }
+
 }
 
 /* =========================
