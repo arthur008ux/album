@@ -169,7 +169,7 @@ main.container {
 
   /* Fotos laterais */
   .photo.side {
-    width: 35vw;                /* menores */
+    width: 35vw;               
     height: auto;
     opacity: 0.8;
   }
