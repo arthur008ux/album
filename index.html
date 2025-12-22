@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nós</title>
+</head>
+<body>
+    
+  <div class="player-wrapper">
+  <div class="spotify-player">
+    <img src="/src/capa.jpg" class="cover">
+
+    <div class="info">
+      <span class="title">ISSO ME LEMBRA VOCÊ</span>
+      <span class="artist">Pras damas</span>
+    </div>
+
+    <button id="playPause">▶</button>
+
+    <audio id="music" src="/src/Pras damas.mp3"></audio>
+  </div>
+</div>
+
+  <!-- Conteúdo principal do site -->
+<main class="container">
+
+ <section class="gallery">
+
+  <!-- Setinha esquerda -->
+  <button class="arrow left" id="prevPhoto">❮</button>
+
+  <!-- Foto lateral esquerda -->
+  <img class="photo side" id="leftPhoto" alt="Foto esquerda">
+
+  <!-- Foto central -->
+  <img class="photo center" id="mainPhoto" alt="Foto principal">
+
+  <!-- Foto lateral direita -->
+  <img class="photo side" id="rightPhoto" alt="Foto direita">
+
+  <!-- Setinha direita -->
+  <button class="arrow right" id="nextPhoto">❯</button>
+
+  
+</section>
+
+
+<!-- Legenda da foto central -->
+<p id="caption" class="caption">
+  <!-- texto entra via JS -->
+</p>
+
+
+  <!-- Texto abaixo das fotos -->
+  <section class="text">
+    <h2>pra lembrar de nós</h2>
+    <p>
+      espero atualizar isso aqui sempre!
+    </p>
+  </section>
+
+</main>
+
+
+
+<script src="main.js"></script>
+</body>
+</html>
