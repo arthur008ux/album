@@ -1,70 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Nós</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Nós</title>
 </head>
 <body>
-    
+
+  <!-- PLAYER -->
   <div class="player-wrapper">
-  <div class="spotify-player">
-    <img src="/src/capa.jpg" class="cover">
+    <div class="spotify-player">
+      <img src="/src/capa.jpg" class="cover">
 
-    <div class="info">
-      <span class="title">ISSO ME LEMBRA VOCÊ</span>
-      <span class="artist">Pras damas</span>
+      <div class="info">
+        <span class="title">ISSO ME LEMBRA VOCÊ</span>
+        <span class="artist">Pras damas</span>
+
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <button id="playPause">▶</button>
+      <audio id="music" src="/src/Pras damas.mp3"></audio>
     </div>
-
-    <button id="playPause">▶</button>
-
-    <audio id="music" src="/src/Pras damas.mp3"></audio>
   </div>
-</div>
 
-  <!-- Conteúdo principal do site -->
-<main class="container">
+  <!-- CONTEÚDO -->
+  <main class="container">
 
- <section class="gallery">
+    <section class="gallery">
+      <button class="arrow" id="prevPhoto">❮</button>
 
-  <!-- Setinha esquerda -->
-  <button class="arrow left" id="prevPhoto">❮</button>
+      <img class="photo side" id="leftPhoto">
+      <img class="photo center" id="mainPhoto">
+      <img class="photo side" id="rightPhoto">
 
-  <!-- Foto lateral esquerda -->
-  <img class="photo side" id="leftPhoto" alt="Foto esquerda">
+      <button class="arrow" id="nextPhoto">❯</button>
+    </section>
 
-  <!-- Foto central -->
-  <img class="photo center" id="mainPhoto" alt="Foto principal">
+    <p id="caption" class="caption"></p>
+    <p id="loveText" class="love-text"></p>
 
-  <!-- Foto lateral direita -->
-  <img class="photo side" id="rightPhoto" alt="Foto direita">
+    <section class="text">
+      <h2>pra lembrar da gente</h2>
+      <p>
+        cada foto aqui é um pedacinho do que eu sinto.  
+        isso é só nosso 💜🧡
+      </p>
+    </section>
 
-  <!-- Setinha direita -->
-  <button class="arrow right" id="nextPhoto">❯</button>
+  </main>
 
-  
-</section>
-
-
-<!-- Legenda da foto central -->
-<p id="caption" class="caption">
-  <!-- texto entra via JS -->
-</p>
-
-
-  <!-- Texto abaixo das fotos -->
-  <section class="text">
-    <h2>pra lembrar de nós</h2>
-    <p>
-      espero atualizar isso aqui sempre!
-    </p>
-  </section>
-
-</main>
-
-
-
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

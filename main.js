@@ -1,7 +1,8 @@
 const music = document.getElementById("music");
 const playPause = document.getElementById("playPause");
+const progressBar = document.getElementById("progressBar");
 
-playPause.addEventListener("click", () => {
+playPause.onclick = () => {
   if (music.paused) {
     music.play();
     playPause.textContent = "⏸";
@@ -9,113 +10,115 @@ playPause.addEventListener("click", () => {
     music.pause();
     playPause.textContent = "▶";
   }
+};
+
+music.addEventListener("timeupdate", () => {
+  progressBar.style.width = (music.currentTime / music.duration) * 100 + "%";
 });
 
-// ================================
-// ================================
-// GALERIA 3 EM 3 + ANIMAÇÃO + LEGENDA
-// ================================
-
-// Lista de fotos
+// GALERIA
 const photos = [
   "src/img1.jpeg",
   "src/img2.jpeg",
   "src/img3.jpeg",
   "src/img4.jpeg",
   "src/img6.jpeg",
-  "src/img5.jpeg"
+  "src/img5.jpeg",
+  "src/foto1.jpeg",
+  "src/foto2.jpeg",
+  "src/foto3.jpeg",
+  "src/foto4.jpeg",
+  "src/foto5.jpeg",
+  "src/foto6.jpeg",
+  "src/foto7.jpeg",
+  "src/foto8.jpeg",
+  "src/foto9.jpeg",
+  "src/foto10.jpeg",
+  "src/foto11.jpeg",
+  "src/foto12.jpeg",
+  "src/foto13.jpeg",
+  "src/foto14.jpeg",
+  "src/foto15.jpeg",
+  "src/foto16.jpeg",
+  "src/foto17.jpeg",
+  "src/foto18.jpeg",
+  "src/foto19.jpeg",
+  "src/foto20.jpeg",
+  "src/foto21.jpeg",
+  "src/foto22.jpeg"
 ];
 
-// Legendas correspondentes às fotos
 const captions = [
-  "quase um dia das mães kakakak ",
-  "Nosso joguin🎮",
-  "Essa foto sempre me faz sorrir",
-  "essa foto ficou pika",
-  "Através da minha janela? kakak",
-  "Mais um momento pra guardar pra sempre"
+  "o começo de tudo 💜",
+  "um dos meus dias favoritos",
+  "nessa foto eu já sabia",
+  "a gente do nosso jeitinho",
+  "meu sorriso sempre começa em você",
+  "momentos simples, mas nossos",
+  "essa aqui mora no meu coração",
+  "risada que eu nunca esqueço",
+  "parece pouco, mas significa muito",
+  "com você tudo fica leve",
+  "mais um dia pra guardar",
+  "eu escolheria esse momento de novo",
+  "um detalhe que virou memória",
+  "a vida ficou mais bonita aqui",
+  "esse dia foi especial",
+  "um pedacinho da nossa história",
+  "meu lugar favorito",
+  "onde eu queria estar",
+  "isso aqui é amor",
+  "entre tantas fotos, essa",
+  "a gente sem esforço",
+  "e ainda faltam muitas memórias 💜🧡"
 ];
 
-// Índice da foto central
-let currentIndex = 0;
 
-// Elementos do DOM
-const mainPhoto  = document.getElementById("mainPhoto");
-const leftPhoto  = document.getElementById("leftPhoto");
+const loveLines = [
+  "com você tudo faz sentido",
+  "meu lugar é ao seu lado",
+  "isso aqui é amor",
+  "te escolheria sempre",
+  "a gente 💜🧡"
+];
+
+let index = 0;
+
+const mainPhoto = document.getElementById("mainPhoto");
+const leftPhoto = document.getElementById("leftPhoto");
 const rightPhoto = document.getElementById("rightPhoto");
-const captionEl  = document.getElementById("caption");
+const caption = document.getElementById("caption");
+const loveText = document.getElementById("loveText");
 
-const prevBtn = document.getElementById("prevPhoto");
-const nextBtn = document.getElementById("nextPhoto");
-
-// -------------------------------
-// Atualiza galeria com animação
-// -------------------------------
 function updateGallery() {
+  const left = (index - 1 + photos.length) % photos.length;
+  const right = (index + 1) % photos.length;
 
-  // Ativa animação
-  mainPhoto.classList.add("fade");
-  leftPhoto.classList.add("fade");
-  rightPhoto.classList.add("fade");
+  mainPhoto.src = photos[index];
+  leftPhoto.src = photos[left];
+  rightPhoto.src = photos[right];
 
-  // Pequeno delay pra troca parecer suave
-  setTimeout(() => {
-
-    const leftIndex  = (currentIndex - 1 + photos.length) % photos.length;
-    const rightIndex = (currentIndex + 1) % photos.length;
-
-    // Atualiza imagens
-    mainPhoto.src  = photos[currentIndex];
-    leftPhoto.src  = photos[leftIndex];
-    rightPhoto.src = photos[rightIndex];
-
-    // Atualiza legenda
-    captionEl.textContent = captions[currentIndex];
-
-    // Remove animação
-    mainPhoto.classList.remove("fade");
-    leftPhoto.classList.remove("fade");
-    rightPhoto.classList.remove("fade");
-
-  }, 200);
+  caption.textContent = captions[index];
+  loveText.textContent = loveLines[Math.floor(Math.random() * loveLines.length)];
 }
 
-// Inicializa
 updateGallery();
 
-// -------------------------------
-// Botão PRÓXIMA
-// -------------------------------
-nextBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % photos.length;
+document.getElementById("nextPhoto").onclick = () => {
+  index = (index + 1) % photos.length;
   updateGallery();
-});
+};
 
-// -------------------------------
-// Botão ANTERIOR
-// -------------------------------
-prevBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+document.getElementById("prevPhoto").onclick = () => {
+  index = (index - 1 + photos.length) % photos.length;
   updateGallery();
-});
+};
 
-// ================================
-// SWIPE NO CELULAR
-// ================================
-
+// SWIPE
 let startX = 0;
-
-mainPhoto.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-mainPhoto.addEventListener("touchend", (e) => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-
-  if (diff > 50) {
-    nextBtn.click();
-  } else if (diff < -50) {
-    prevBtn.click();
-  }
+mainPhoto.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+mainPhoto.addEventListener("touchend", e => {
+  const diff = startX - e.changedTouches[0].clientX;
+  if (diff > 50) index++, updateGallery();
+  if (diff < -50) index--, updateGallery();
 });
